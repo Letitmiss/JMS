@@ -70,8 +70,8 @@ Java消息中间件学习笔记
 
 ## 具体实践
 
-### [01JMS规范解析](https://github.com/Letitmiss/JMS/blob/master/JMS%E8%A7%84%E8%8C%83.md)
-### [02ActiveMQ实践](https://github.com/Letitmiss/JMS/blob/master/activemq.md)
+### [01.JMS规范解析](https://github.com/Letitmiss/JMS/blob/master/JMS%E8%A7%84%E8%8C%83.md)
+### [02.ActiveMQ实践](https://github.com/Letitmiss/JMS/blob/master/activemq.md)
 
 
 
