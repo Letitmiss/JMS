@@ -33,18 +33,18 @@
 2. 创建包com.jms.queue,添加类AppProducer
 
 `
-package com.jms.queue;
+	package com.jms.queue;
 
-import javax.jms.Connection;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.MessageProducer;
-import javax.jms.Session;
-import javax.jms.TextMessage;
+	import javax.jms.Connection;
+	import javax.jms.Destination;
+	import javax.jms.JMSException;
+	import javax.jms.MessageProducer;
+	import javax.jms.Session;
+	import javax.jms.TextMessage;
 
-import org.apache.activemq.ActiveMQConnectionFactory;
+	import org.apache.activemq.ActiveMQConnectionFactory;
 
-public class AppProducer {
+	public class AppProducer {
 	
 	private static final String url="tcp://10.253.177.16:61616";
 	private static final String queueName="queue-test";
@@ -84,6 +84,6 @@ public class AppProducer {
 		
 	}
 
-}
+	}
 `
 
