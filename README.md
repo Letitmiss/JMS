@@ -4,16 +4,20 @@ Java消息中间件学习笔记
 # 为什么需要消息中间件？
   老王给女儿讲故事
   ![最初讲故事](https://github.com/Letitmiss/JMS/blob/master/img/001.jpg)
+  
+  讲故事的优化
+  ![故事的优化](https://github.com/Letitmiss/JMS/blob/master/img/002.jpg)
 1. 老王不用分别给两个女儿讲故事
 2. 老王也不用关心电话能否打通，或者对面是否正在听(解耦 ，异步)
 3. 其他人喜欢老王的故事也可以，来听听(扩展方便)
 
 ## 服务调用使得其他系统感知事件发生
-
+  ![服务调用](https://github.com/Letitmiss/JMS/blob/master/img/003.jpg)
  1. 主要服务模块主动调用其他模块使得其他模块
  2. 系统间耦合比较大，其他模块方法修改，登陆模块也需要修改
  
 ## 消息中件间解耦服务调用
+![消息中间件](https://github.com/Letitmiss/JMS/blob/master/img/004.jpg)
 
 1. 通过消息中间件，登陆系统主要关注登陆，同时发起一个登陆成功消息到中间件，其他模块订阅这个消息，执行登陆成功的一系列动作；
 2. 系统的耦合性明显降低，登陆模块主要关注自己的业务即可
@@ -32,6 +36,10 @@ Java消息中间件学习笔记
     
 ### 什么是AMQP?
 *  AMQP，即Advanced Message Queuing Protocol,一个提供统一消息服务的应用层标准高级消息队列协议,是应用层协议的一个开放标准,为面向消息的中间件设计。    基于此协议的客户端与消息中间件可传递消息，并不受客户端/中间件不同产品，不同的开发语言等条件的限制。Erlang中的实现有 RabbitMQ等。
+
+### JMS和AMQP的比价
+  ![对比](https://github.com/Letitmiss/JMS/blob/master/img/005.jpg)
+
 
 ### 常见的消息中间件
 
@@ -56,7 +64,7 @@ Java消息中间件学习笔记
 * 支持通过Kafka服务器和消费机集群来分区消息。
 
 ### 消息中间件对比
-
+ 
 
 
 
