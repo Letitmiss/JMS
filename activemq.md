@@ -152,7 +152,7 @@
   5. 测试方法
   
 * 第二次运行这个类时收不到消息，表示消息已经被消费了，queque 一个消息只会成功消费一次
-* 打开消费者线程，消费者监听消息，同时开启发送消息线程，发送消息线程，消费者收到消息，表示ok；
+* 打开消费者线程，消费者监听消息，同时开启发送消息线程，发送消息线程，消费者收到消息，表示ok；（无先后启动顺序）
 * 多个消费者 ： 同时启动两个消费者线程，然后开启发送生产消息线程，可以看到两个消费者者平均分配了消息
 
 ##  主题消息模式展示
@@ -197,7 +197,7 @@
 			//7.发送消息
 			for (int i = 0; i < 100; i++) {
 				//1.创建消息
-				TextMessage textMessage = session.createTextMessage("test queue message"+ i);		
+				TextMessage textMessage = session.createTextMessage("test topic message"+ i);		
 				//2.发送消息
 				producer.send(textMessage);
 				//log
@@ -210,64 +210,69 @@
 	}	
 	
 2. 创建一个订阅者AppConsumer
+
 ````
-package com.jms.topic;
+	package com.jms.topic;
 
-import javax.jms.Connection;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.MessageListener;
-import javax.jms.Session;
-import javax.jms.TextMessage;
+	import javax.jms.Connection;
+	import javax.jms.Destination;
+	import javax.jms.JMSException;
+	import javax.jms.Message;
+	import javax.jms.MessageConsumer;
+	import javax.jms.MessageListener;
+	import javax.jms.Session;
+	import javax.jms.TextMessage;
 
-import org.apache.activemq.ActiveMQConnectionFactory;
+	import org.apache.activemq.ActiveMQConnectionFactory;
 
-public class AppConsumer {
-	
-	private static final String url="tcp://10.253.177.16:61616";
-	private static final String topicName="topic-test";
-	
-	public static void main(String[] args) throws JMSException {
-		//1.创建连接工程ConnectionFactory
-		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
-		
-		//2. 创建Connection
-		Connection connection = connectionFactory.createConnection();
-		
-		//3.启动连接
-		connection.start();
-		
-		//4.创建会话
-		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-		
-		//5.创建目的地
-		Destination destination = session.createTopic(topicName);
-		
-		//6.创建一个消费者
-		MessageConsumer consumer = session.createConsumer(destination);
-		
-		//7.创建一个监听器
-		consumer.setMessageListener(new MessageListener() {
-			
-			@Override
-			public void onMessage(Message message) {
-				// 8.接收到的消息	
-				TextMessage textMessage =(TextMessage)message;
-				//log
-				try {
-					System.out.println("接收消息 ：" +textMessage.getText());
-				} catch (JMSException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+	public class AppConsumer {
+
+		private static final String url="tcp://10.253.177.16:61616";
+		private static final String topicName="topic-test";
+
+		public static void main(String[] args) throws JMSException {
+			//1.创建连接工程ConnectionFactory
+			ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
+
+			//2. 创建Connection
+			Connection connection = connectionFactory.createConnection();
+
+			//3.启动连接
+			connection.start();
+
+			//4.创建会话
+			Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+
+			//5.创建目的地
+			Destination destination = session.createTopic(topicName);
+
+			//6.创建一个消费者
+			MessageConsumer consumer = session.createConsumer(destination);
+
+			//7.创建一个监听器
+			consumer.setMessageListener(new MessageListener() {
+
+				@Override
+				public void onMessage(Message message) {
+					// 8.接收到的消息	
+					TextMessage textMessage =(TextMessage)message;
+					//log
+					try {
+						System.out.println("接收消息 ：" +textMessage.getText());
+					} catch (JMSException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-			}
-		});
-		
-		//9.关闭连接
-		//session.close();
+			});
+
+			//9.关闭连接
+			//session.close();
+		}
 	}
-}
+3. 测试方法 
+*  topic模式如果先启动发布消息，后启动订阅者，订阅是收不到任何消息，应为topic模式订阅者必须提前订阅主题，才可以收到消息
+*　先启动订阅者appConsumer再启动发布者appProducer，查看收到订阅消息OK；
+*  多个订阅者 ： 启动多个订阅者，再启动发布主题，查看两个订阅者都收到了所有的消息 ；
 
 
