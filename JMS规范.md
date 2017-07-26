@@ -18,7 +18,8 @@
 * 队列中的消息只能被一个消费者消费
 * 消费者可以随时消费队列中的消息
 
-示意图 
+![队列模型](https://github.com/Letitmiss/JMS/blob/master/img/006.jpg)
+
 
 ### 主题模型
 
@@ -26,7 +27,7 @@
 * 主题中的消息被所有订阅者消费
 * 消费者不能消费订阅之前就发送到主题中的消息
 
-示意图
+![主题模型](https://github.com/Letitmiss/JMS/blob/master/img/007.jpg)
    
 ### JMS编码接口 
 
@@ -39,4 +40,5 @@
 7. **Message** 是消费者和生产者之间传送的对象，消息头，一组消息属性，一个消息体
 
 ### JMS接口关系
+![接口之间的关系](https://github.com/Letitmiss/JMS/blob/master/img/008.jpg)
 
