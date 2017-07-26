@@ -1,4 +1,4 @@
-package com.jms.queue;
+package com.jms.topic;
 
 import javax.jms.Connection;
 import javax.jms.Destination;
@@ -13,7 +13,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class AppConsumer {
 	private static final String url="tcp://192.168.254.129:61616";
-	private static final String queueName="queue-test";
+	private static final String topicName="topic-test";
 
 	public static void main(String[] args) throws JMSException {
 		//1.创建连接工程ConnectionFactory
@@ -29,8 +29,8 @@ public class AppConsumer {
 		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
 		//5.创建目的地
-		//Queue createQueue = session.createQueue(queueName);
-		Destination destination = session.createQueue(queueName);
+		
+		Destination destination = session.createTopic(topicName);
 
 		//6.创建一个消费者
 		MessageConsumer consumer = session.createConsumer(destination);
