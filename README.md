@@ -64,7 +64,8 @@ Java消息中间件学习笔记
 * 支持通过Kafka服务器和消费机集群来分区消息。
 
 ### 消息中间件对比
- 
+ ![综合比较](https://github.com/Letitmiss/JMS/blob/master/img/009.jpg)
+
 
 
 
