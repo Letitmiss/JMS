@@ -32,9 +32,9 @@
  
 2. 创建包com.jms.queue,添加类AppProducer
 
-`
-	package com.jms.queue;
 
+	````
+	package com.jms.queue;
 	import javax.jms.Connection;
 	import javax.jms.Destination;
 	import javax.jms.JMSException;
@@ -84,6 +84,6 @@
 		
 	}
 
-	}
-`
+	}````
+
 
