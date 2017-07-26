@@ -10,7 +10,7 @@ import javax.jms.TextMessage;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class AppProducer {
-	private static final String url="tcp://192.168.254.129:61616";
+	private static final String url="tcp://127.0.0.1:61616";
 	private static final String topicName="queue-test";
 
 	public static void main(String[] args) throws JMSException {
