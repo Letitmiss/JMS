@@ -20,6 +20,7 @@
 
 ### 创建项目
 1. 创建maven项目，JMS—Test，导入相关依赖，POM文件
+
   `<dependencies>
      <dependency>
       <groupId>org.apache.activemq</groupId>
