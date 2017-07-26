@@ -18,4 +18,16 @@
 
 ## 队列消息的展示
 
+### 创建项目
+1. 创建maven项目，JMS—Test，导入相关依赖，POM文件
+   
+   `<dependencies>
+     <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-all</artifactId>
+      <version>5.15.0</version>
+     </dependency>
+    </dependencies>`
+ 
+2. 创建包com.jms.queue,添加类AppProducer
 
