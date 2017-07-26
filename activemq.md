@@ -278,4 +278,6 @@
 * 先启动订阅者appConsumer再启动发布者appProducer，查看收到订阅消息OK
 * 多个订阅者 ： 启动多个订阅者，再启动发布主题，查看两个订阅者都收到了所有的消息
 
+## ActiveMQ与spring整合
+
 
