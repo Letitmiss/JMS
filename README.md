@@ -61,7 +61,7 @@ Java消息中间件学习笔记
 
 
 
-## [JMS规范]()
+## [JMS规范](https://github.com/Letitmiss/JMS/blob/master/JMS%E8%A7%84%E8%8C%83.md)
 ## [ActiveMQ实践]()
 
 
