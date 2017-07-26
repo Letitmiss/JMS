@@ -212,7 +212,7 @@
 	
 2. 创建一个订阅者AppConsumer
 
-````
+	````
 	package com.jms.topic;
 
 	import javax.jms.Connection;
@@ -270,9 +270,8 @@
 			//9.关闭连接
 			//session.close();
 		}
-	}
-	
-	
+		}
+		
 3. 测试方法
 
 * topic模式如果先启动发布消息，后启动订阅者，订阅是收不到任何消息，**应为topic模式订阅者必须提前订阅主题**，才可以收到消息
