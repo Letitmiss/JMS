@@ -138,12 +138,11 @@
     ````
        
 * 设置共享文件
-       
-       ````
-        <persistenceAdapter>
-            <kahaDB directory="/home/source/source/activemqclu/sharedb"/>
-        </persistenceAdapter>
-        ````
+     ````
+    <persistenceAdapter>
+        <kahaDB directory="/home/source/source/activemqclu/sharedb"/>
+    </persistenceAdapter>
+    ````
 * 配置 jetty端口为8162
       
  4. 配置activemq-c
