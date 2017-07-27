@@ -164,9 +164,19 @@
     ````
 * 配置 jetty端口为8163
     
- 5. adc顺序启动
+ 5. adc顺序启动，并测试
  
     `ps ef | grep activemq` 查看启动了三个进程 <br />
-    `netstat -anp | grep 61616` ，`netstat -anp | grep 61617`  `netstat -anp | grep 61618` 查看对外服务端口 
- 
-
+    `netstat -anp | grep 61616` ，`netstat -anp | grep 61617`  `netstat -anp | grep 61618` 查看对外服务端口 <br/>
+     发现61618没有对外提供服务，因为c为slave，是启动状态但是没有对外提供服务 <br/>
+     
+     集群如果B关闭了，C就自动对外提供服务,`./activemq-b/bin/activemq stop`  <br/>
+     关闭B查看`netstat -anp | grep 61618` 就有对外提供的服务了
+     
+    
+    lfg1000707999:/home/source/source/activemqclu # netstat -anp | grep 61618
+    tcp        0      0 :::61618                :::*                    LISTEN      17773/java          
+    tcp        0      0 127.0.0.1:61618         127.0.0.1:52472         ESTABLISHED 17773/java          
+    tcp        0      0 127.0.0.1:52472         127.0.0.1:61618         ESTABLISHED 16381/java
+    
+   
