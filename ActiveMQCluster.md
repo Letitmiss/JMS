@@ -26,6 +26,8 @@
 
 ### BrokerCluster集群配置
 
+   ![BrokerCluster](https://github.com/Letitmiss/JMS/blob/master/img/brokercluster.jpg)
+
 1. 多台消息服务器之间同步消息 
 
 2. 网络连接器NetworkConnector <br/>
@@ -57,29 +59,30 @@
 #### 1.share nothing storage master/slave （已经过时，5.8+ 被移除）
 #### 2 Shared storage master/slave 基于共享存储
 
-  示意图
-  
+   ![基于共享存储](https://github.com/Letitmiss/JMS/blob/master/img/master-slave1.jpg)
+   
   1.采用是持久化数据，持久化可以是数据库，也可以是文件系统 <br />
   2.A启动获得资源排他锁,成为Master，如果A挂了，B就会立即获得资源排他锁，成为master <br />
   3.客户端采用了实效转移，将请求由A消息服务器转移到B执行，达到高可以用 <br />
   
 #### 3.Prelicated LevelDB Store 基于复制的LevelDB Stroe 
 
-  示意图
+  ![基于复制的LevelDB Stroe](https://github.com/Letitmiss/JMS/blob/master/img/master-slave2.jpg)
   
   1. zk选举A为Master，A对外提供服务，发消息到zk，zk将消息同步给B和C节点<br />
   2. 通过zookeeper选主集群，保证zk的稳定性,所以zk也必须为集群部署 <br />
   2. 如果A挂机，zk自动高可用，会选举出新的master，达到高可用
   
 ## 两种集群比较
+![compare](https://github.com/Letitmiss/JMS/blob/master/img/compare.jpg)
 
-
+结合可以既可以实现高可用，又可以实现高并发
 
 ## 三台服务器的完美解决方案
   
 ### 三台服务器集群分析 
   
-  示意图
+  ![3cluster](https://github.com/Letitmiss/JMS/blob/master/img/3cluster.jpg)
   
   1.需要按照A-B—C顺序启动服务器，A没有设置持久化，通过BC完成，B先启动获得资源排他锁 <br/>
   2.ABC三台服务器之间消息同步，可以实现负载均衡，达到高并发 <br/>
@@ -92,7 +95,7 @@
   
 1. 配置方案
  
-    示意图
+    ![config](https://github.com/Letitmiss/JMS/blob/master/img/clusterconfig.jpg)
     
     A节点只是作为消费者，如果A有消息，还没有被BC消费就挂了，BC就不能消费到A的消费了，造成消息丢失
     
