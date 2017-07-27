@@ -55,16 +55,16 @@
 * share nothing storage master/slave （已经过时，5.8+ 被移除）
 * Shared storage master/slave 基于共享存储
 
-
   示意图
-  
   
   1.采用是持久化数据，持久化可以是数据库，也可以是文件系统 <br />
   2.A启动获得资源排他锁,成为Master，如果A挂了，B就会立即获得资源排他锁，成为master <br />
   3.客户端采用了实效转移，将请求由A消息服务器转移到B执行，达到高可以用 <br />
 * Prelicated LevelDB Store 基于复制的LevelDB Stroe 
+
   示意图
-  1. 
-  通过zookeeper选主集群，保证zk的稳定性
-2. 
+  
+  1. zk选举A为Master，A对外提供服务，发消息到zk，zk将消息同步给B和C节点<br />
+  2. 通过zookeeper选主集群，保证zk的稳定性,所以zk也必须为集群部署 <br />
+  2. 如果A挂机，zk自动高可用，会选举出新的master，达到高可用
 
