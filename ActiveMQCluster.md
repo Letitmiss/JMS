@@ -88,6 +88,31 @@
   
 ### 三台服务器集群实战
   
+ 1. 配置方案
  
+    示意图
+    
+    A节点只是作为消费者，如果A有消息，还没有被BC消费就挂了，BC就不能消费到A的消费了，造成消息丢失
+    
+    不同服务器，需要设置共享文件，使用分布式文件系统
+ 
+ 2. 创建文件夹，复制activemq-a，activemq-b，activemq-c
   
+    ````
+    mkdir activemqclu
+    cp -r apache-activemq-5.15.0 activemqclu/activemq-a
+    cp -r apache-activemq-5.15.0 activemqclu/activemq-b
+    cp -r apache-activemq-5.15.0 activemqclu/activemq-c
+    mkdir sharedb
+    ````
 
+3. 修改activemq-a
+    
+    ````
+    vim activemq.xml
+    修改<transportConnectors>节点，除了openwire的<transportConnector>都注释了
+    增加静态网络链接
+    <networkConnectors>
+      <networkConnector name="local_network" uri="static:(tcp://127.0.0.1:61617,tcp://127.0.0.1:61618)"  />
+    </networkConnectors> 
+    
