@@ -243,3 +243,25 @@ public class AppConsumer {
 * 确保activemq可以访问，同时启动消费者和生产者，查看activemq查看消息生产和消费
 * 启动多个消费者，查看多个消费者平均分配了消息，而且每个消息只能被消费一次
 	
+## topic消息模式
+
+### 修改queue消息模式为topic消息模式
+1. 在jms-common中加入一个topic目的地
+    ````	
+    <!-- topic 目的地-->
+	<bean id="topicDestination" class="org.apache.activemq.command.ActiveMQTopic">
+	<constructor-arg value="topic"></constructor-arg>
+    </bean>
+    ````
+2. 在ProducerServiceImpl中修改注入的目的地类型
+	````
+	@Resource(name="topicDestination")
+	private Destination destination;
+	````
+3. 在consumer.xml修改监听消息的目的地
+	````
+	<!-- 监听消息目的地 -->
+ 	<property name="destination" ref="topicDestination"></property>
+	````
+	
+
