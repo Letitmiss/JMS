@@ -152,3 +152,70 @@ public class AppProducer {
 ````
 5. 测试queue模式生产者，发送消息到ActimeMQ
 * 首先确保activemq的页面可以访问，执行Appproducer的main方法，查看queues页签的Number Of Pending Messages 是不是100，队列名称是否增加了queue 
+### 创建queue消费者
+
+1. 创建包com.jsm.consumer,创建消费者消息监听器CounsumerMessageListener
+````
+package com.jms.consumer;
+
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.TextMessage;
+
+/**
+ * Queue监听接收到的消息
+ */
+public class ConsumuerMessageListener implements MessageListener{
+	@Override
+	public void onMessage(Message message) {
+		//已经收到的消息
+		TextMessage textMessage = (TextMessage)message;
+		//log
+		try {
+			System.out.println("收到消息  ："  + textMessage.getText());
+		} catch (JMSException e) {		
+			e.printStackTrace();
+		}
+	}
+}
+````
+2. 配置Consumer.xml,
+* 消费者和生产者都有相同配置，将公共的配置抽取一个公共jms-common.xml,在配置文件中加入
+  
+  	````	
+ 	<!-- 开启注解扫描 -->	
+ 	<context:annotation-config />
+ 	
+ 	<!-- activeMQ提供目标连接 -->
+ 	<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+ 		<property name="brokerURL" value="tcp://10.253.177.16:61616"></property>
+ 	</bean>
+ 	
+ 	<!-- spring提供管理链接工厂 -->
+ 	<bean id="connectionFactory"  class="org.springframework.jms.connection.SingleConnectionFactory">
+		<property name="targetConnectionFactory" ref="targetConnectionFactory"></property>
+ 	</bean>
+ 	
+ 	<!--队列目的地   P2P-->
+ 	<bean id="queueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+ 		<constructor-arg value="queue"></constructor-arg>
+ 	</bean>
+  	````
+* consumer.xml
+	````
+ 	<import resource="jms-common.xml"/>
+ 	
+ 	<!-- 自定义的消息监听器 -->
+ 	<bean id="consumuerMessageListener" class="com.jms.consumer.ConsumuerMessageListener"></bean>
+ 	
+ 	<!-- spring提供的消息监听容器 -->
+ 	<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+ 		<!-- spring连接工厂 -->
+ 		<property name="connectionFactory" ref="connectionFactory"></property>
+ 		<!-- 监听消息目的地 -->
+ 		<property name="destination" ref="queueDestination"></property>
+ 		<!-- 注入自定义的消息监听 -->
+ 		<property name="messageListener" ref="consumuerMessageListener"></property> 	
+ 	</bean> 	
+  	````
