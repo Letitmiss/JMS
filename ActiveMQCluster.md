@@ -212,7 +212,7 @@ private static final String queueName="queue-cluster-test";
 ## 企业系统中JMS的最佳实践 
 
 ### 实际业务场景
-   ![]()
+   ![实际业务](https://github.com/Letitmiss/JMS/blob/master/img/fenxi1.jpg)
 1. 分析
 2. 特点
 * 子业务系统都有集群的可能性
