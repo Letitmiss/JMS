@@ -25,7 +25,7 @@
   * 导入junit
   * 导入spring-jms
   * 导入spring-test
-  *　导入activemq-core 排除spring-context
+  * 导入activemq-core 排除spring-context
     
 2. 创建包com.jms.producer，创建生产者接口ProducerService
 ```
