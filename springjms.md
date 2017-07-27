@@ -2,7 +2,7 @@
 
 # Spring Jms
 
-## Spring集成JMS链接AtiveMQ接口
+## Spring集成JMS了连接AtiveMQ接口
 
 ### ConnectionFactory用于管理连接的连接工厂
 * Spring为我们提供的连接池，减少资源消耗和等待时间
