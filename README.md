@@ -1,7 +1,7 @@
 # JMS
 Java消息中间件学习笔记
 
-### [00.消息中间件概述](https://github.com/Letitmiss/JMS/edit/master/README.md)
+### [00.消息中间件概述](https://github.com/Letitmiss/JMS/blob/master/README.md)
 ### [01.JMS规范解析](https://github.com/Letitmiss/JMS/blob/master/JMS%E8%A7%84%E8%8C%83.md)
 ### [02.ActiveMQ实践](https://github.com/Letitmiss/JMS/blob/master/activemq.md)
 
