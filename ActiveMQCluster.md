@@ -24,16 +24,16 @@
 
 ### BrokerCluster集群配置
 
-1. 
+1.多台消息服务器之间同步消息 
 
 2. 网络连接器NetworkConnector <br/>
 
 * 网络连接器主要用于配置ActiveMQ服务器与服务器之间的网络通讯方式，用于服务器透传消息,分为静态连接器和动态连接器 
 * 静态连接器： 通过IP地址配置连接,不方便扩展
-     ```
+     `
     <networkConnectors>
     <networkConnector uri="static:(tcp://127.0.0.1:61617,tcp://127.0.0.1:61617)"
-    </networkConnectors>
+    </networkConnectors>`
  * 连接器 ：配置网路连接器和传输连接器
   ````
    <networkConnectors>
@@ -44,3 +44,7 @@
     <transportConnector uri="tcp://localhost:0" discoveryUri="multicast://default" />
   </transportConnectors>
   
+  ### 
+
+
+
