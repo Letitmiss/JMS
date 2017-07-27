@@ -186,10 +186,9 @@
 
   采用ActiveMQ入门的项目代码，修改url
 2. queue消息模型
+````
+//private static final String url="tcp://10.253.177.16:61616";
+private static final String url="failover:(tcp://10.253.177.16:61617,tcp://10.253.177.16:61618)?randomize=true";
+private static final String queueName="queue-cluster-test";
 
-  ````
-  //private static final String url="tcp://10.253.177.16:61616";
-	private static final String url="failover:(tcp://10.253.177.16:61617,tcp://10.253.177.16:61618)?randomize=true";
-	private static final String queueName="queue-cluster-test";
-  ````
   
