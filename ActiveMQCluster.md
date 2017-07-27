@@ -106,13 +106,66 @@
     mkdir sharedb
     ````
 
-3. 修改activemq-a
-    
-    ````
-    vim activemq.xml
-    修改<transportConnectors>节点，除了openwire的<transportConnector>都注释了
-    增加静态网络链接
+3. 配置activemq-a
+           
+* `vim activemq.xml`修改<transportConnectors>节点，除了openwire的<transportConnector>都注释了,增加静态网络链接
+  
+  ````
     <networkConnectors>
       <networkConnector name="local_network" uri="static:(tcp://127.0.0.1:61617,tcp://127.0.0.1:61618)"  />
-    </networkConnectors> 
+    </networkConnectors>
+    ````
     
+* `vim jetty.xml` 端口采用默认8161
+    
+    ````
+    <bean id="jettyPort" class="org.apache.activemq.web.WebConsolePort" init-method="start">
+         <!-- the default port number for the web console -->
+        <property name="host" value="0.0.0.0"/>
+        <property name="port" value="8161"/>
+      </bean>
+     ````
+ 
+ 4. 配置activemq-b
+    
+    `
+    注释其他链接， 设置opwire的对外端口为61617
+    添加链接
+   
+    <networkConnectors>
+                <networkConnector name="network_a" uri="static:(tcp://127.0.0.1:61616)"  />
+    </networkConnectors>
+    
+       
+        设置共享文件
+        <persistenceAdapter>
+            <kahaDB directory="/home/source/source/activemqclu/sharedb"/>
+        </persistenceAdapter>
+      
+      配置 jetty端口为8162
+      `
+ 4. 配置activemq-c
+    `
+    注释其他链接 设置opwire的对外端口为61618
+    添加链接
+   
+    <networkConnectors>
+                <networkConnector name="network_a" uri="static:(tcp://127.0.0.1:61616)"  />
+    </networkConnectors>
+    
+       
+        设置共享文件
+        <persistenceAdapter>
+            <kahaDB directory="/home/source/source/activemqclu/sharedb"/>
+        </persistenceAdapter>
+      
+      配置 jetty端口为8163
+    `
+    
+ 5. adc顺序启动
+     
+     `ps ef | grep activemq` 查看启动了三个进程 <br />
+     
+     `netstat -anp | grep 61616` ，`netstat -anp | grep 61617`  `netstat -anp | grep 61618` 查看对外服务端口 
+ 
+
