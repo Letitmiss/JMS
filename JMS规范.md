@@ -1,4 +1,4 @@
-### [返回首页](https://github.com/Letitmiss/JMS/blob/master/README.md)
+### [首页](https://github.com/Letitmiss/JMS/blob/master/README.md)
 
 # JMS规范                                
 
