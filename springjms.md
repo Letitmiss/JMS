@@ -221,7 +221,7 @@ public class ConsumuerMessageListener implements MessageListener{
  		<property name="messageListener" ref="consumuerMessageListener"></property> 	
  	</bean> 	
   	````
-3. 创建消费者，APPCOnsumer 消费消息
+3. 创建消费者，AppConsumer 消费消息
 ````
 package com.jms.consumer;
 
