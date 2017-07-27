@@ -185,6 +185,7 @@
 1. 项目准备
 
   采用ActiveMQ入门的项目代码，修改url
+
 2. queue消息模型
 ````
 //private static final String url="tcp://10.253.177.16:61616";
