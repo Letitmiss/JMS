@@ -39,6 +39,7 @@
   ````
 
 4. 动态连接器 ：配置网路连接器和传输连接器
+  
   ````
    <networkConnectors>
       <networkConnector uri="multicast://default"/>
@@ -48,7 +49,7 @@
     <transportConnector uri="tcp://localhost:0" discoveryUri="multicast://default" />
   </transportConnectors>
   ````
-  ### 
+ ### Master/Slave 集群
 
 
 
