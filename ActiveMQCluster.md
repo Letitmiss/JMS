@@ -88,7 +88,7 @@
   
 ### 三台服务器集群实战
   
- 1. 配置方案
+1. 配置方案
  
     示意图
     
@@ -96,7 +96,7 @@
     
     不同服务器，需要设置共享文件，使用分布式文件系统
  
- 2. 创建文件夹，复制activemq-a，activemq-b，activemq-c
+2. 创建文件夹，复制activemq-a，activemq-b，activemq-c
   
     ````
     mkdir activemqclu
@@ -126,7 +126,7 @@
       </bean>
      ````
  
- 4. 配置activemq-b
+4. 配置activemq-b
     
 * 注释其他链接， 设置opwire的对外端口为61617
 * 添加链接
@@ -145,7 +145,7 @@
     ````
 * 配置 jetty端口为8162
       
-5 . 配置activemq-c
+5. 配置activemq-c
 
 * 注释其他链接， 设置opwire的对外端口为61618
 * 添加链接
@@ -164,7 +164,7 @@
     ````
 * 配置 jetty端口为8163
     
- 5. adc顺序启动，并测试
+6. adc顺序启动并测试
  
     `ps ef | grep activemq` 查看启动了三个进程 <br />
     `netstat -anp | grep 61616` ，`netstat -anp | grep 61617`  `netstat -anp | grep 61618` 查看对外服务端口 <br/>
@@ -178,4 +178,18 @@
     tcp        0      0 127.0.0.1:61618         127.0.0.1:52472         ESTABLISHED 17773/java          
     tcp        0      0 127.0.0.1:52472         127.0.0.1:61618         ESTABLISHED 16381/java
     
-   恢复B服务，./activemq-b/bin/activemq start`，此时查看进程是启动，但是61617没有对外提供服务，因为B此时是slave
+   恢复B服务，`./activemq-b/bin/activemq start`，此时查看进程是启动，但是61617没有对外提供服务，因为B此时是slave
+   
+### 三台服务器集群代码测试
+    
+1. 项目准备
+
+  采用ActiveMQ入门的项目代码，修改url
+2. queue消息模型
+
+  ````
+  //private static final String url="tcp://10.253.177.16:61616";
+	private static final String url="failover:(tcp://10.253.177.16:61617,tcp://10.253.177.16:61618)?randomize=true";
+	private static final String queueName="queue-cluster-test";
+  ````
+  
