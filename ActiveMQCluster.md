@@ -171,12 +171,11 @@
      发现61618没有对外提供服务，因为c为slave，是启动状态但是没有对外提供服务 <br/>
      
      集群如果B关闭了，C就自动对外提供服务,`./activemq-b/bin/activemq stop`  <br/>
-     关闭B查看`netstat -anp | grep 61618` 就有对外提供的服务了
-     
+     关闭B查看`netstat -anp | grep 61618` 就有对外提供的服务了，为master 
     
     lfg1000707999:/home/source/source/activemqclu # netstat -anp | grep 61618
     tcp        0      0 :::61618                :::*                    LISTEN      17773/java          
     tcp        0      0 127.0.0.1:61618         127.0.0.1:52472         ESTABLISHED 17773/java          
     tcp        0      0 127.0.0.1:52472         127.0.0.1:61618         ESTABLISHED 16381/java
     
-   
+   恢复B服务，./activemq-b/bin/activemq start`，此时查看进程是启动，但是61617没有对外提供服务，因为B此时是slave
