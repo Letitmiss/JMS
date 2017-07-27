@@ -13,7 +13,7 @@
 3. Master Slave : 实现高可用
 
 ### 客户端配置
-  ActiveMQ**实效转移（failover）**
+  ActiveMQ**失效转移（failover）**
   * 允许其中一台消息服务器宕机时，客户端在传输层上重新连接到其他消息服务器
   * 语法 `failover:(uri1,...,uriN)?transportOptions`
   * tansportOptions参数说明
@@ -186,15 +186,21 @@
 
   采用ActiveMQ入门的项目代码，修改url
 
-2. queue消息模型,修改AppProducer生产者，集群中B和C为生产者，配置实效转移
+2. queue消息模型,修改AppProducer生产者，集群中B和C为生产者，配置失效转移
 ````
 //private static final String url="tcp://10.253.177.16:61616";
 private static final String url="failover:(tcp://10.253.177.16:61617,tcp://10.253.177.16:61618)?randomize=true";
 private static final String queueName="queue-cluster-test";
 ````
-3.queue消息模型，修改AppConsumer消费者，集群中A、B、C为生产者，配置实效转移
+3. queue消息模型，修改AppConsumer消费者，集群中A、B、C为生产者，配置失效转移
 ````
 //private static final String url="tcp://10.253.177.16:61616";
 	private static final String url="failover:(tcp://10.253.177.16:61616,tcp://10.253.177.16:61617,tcp://10.253.177.16:61618)?randomize=true";
 	private static final String queueName="queue-cluster-test";
-  
+````
+4.测试集群queue模型 
+
+* 查看web，现在在B为slave不对外提供服务，8162端口访问界面拒绝，C为master，C和A的界面可以访问
+* 启动生产消息线程，查看C有100个消息等待，A上没有消息等待（A只能消费），启动消费者线程，页面查看消息的消费；
+* 启动生产线程，查看C有100个消息在等待，此时还没有被消费，后台关闭C服务`./activemq-c/bin/activemq stop`，然后启动消费者线程，消费服务依然能够消费  	消息，集群高可用测试OK；
+
