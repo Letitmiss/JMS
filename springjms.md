@@ -127,7 +127,7 @@ public class ProducerServiceImpl implements ProducerService {
 	}
 }
 ````
-4. 创建AppProducer.java调用producer的sendMessage方法发送消息到指定的activemq目标
+4. 创建AppProducer调用producerservice的sendMessage方法发送消息到指定的activemq目标
 ````
 package com.jms.producer;
 
@@ -219,3 +219,27 @@ public class ConsumuerMessageListener implements MessageListener{
  		<property name="messageListener" ref="consumuerMessageListener"></property> 	
  	</bean> 	
   	````
+3. 创建消费者，APPCOnsumer 消费消息
+````
+package com.jms.consumer;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class AppConsumer {
+	
+	public static void main(String[] args) {
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:consumer.xml");
+		
+		//此处只是需要加载spring的配置文件即可，spring启动监听器线程，一直监听消息，此处不要关闭context这个spring的
+		//上下文对象，因为监听器是异步的，关闭context会造成spring注册对象的销毁，可能收到消息不完整
+		
+	}
+
+}
+```` 
+4. 测试接收消息 
+* 确保activemq可以访问，同时启动消费者和生产者，查看activemq查看消息生产和消费
+* 启动多个消费者，查看多个消费者平均分配了消息，而且每个消息只能被消费一次
+	
