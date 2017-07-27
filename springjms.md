@@ -14,10 +14,31 @@
 
 
 
-##　Spring集成Jms演示
+## Spring集成Jms演示
 
 ### 项目搭建
 
-1. 创建maven项目Jms-spring，导入依赖
+1. 创建maven项目Jms-spring，导入pom依赖
+      
+  * 导入spring-context
+  * 导入spring-core
+  * 导入junit
+  * 导入spring-jms
+  * 导入spring-test
+  *　导入activemq-core 排除spring-context
+    
+2. 创建包com.jms.producer，创建生产者接口ProducerService
+```
+package com.jms.producer;
+
+public interface ProducerService {
+	
+	/**
+	 * send message
+	 */
+	void sendMessage(String message);
+}
+
+
 
 
