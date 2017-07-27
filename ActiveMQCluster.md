@@ -49,7 +49,22 @@
     <transportConnector uri="tcp://localhost:0" discoveryUri="multicast://default" />
   </transportConnectors>
   ````
- ### Master/Slave 集群
+ ## Master/Slave 集群配置
+ 
+1. 三种ActiveMQ Master Slave集群方案
+* share nothing storage master/slave （已经过时，5.8+ 被移除）
+* Shared storage master/slave 基于共享存储
 
 
+  示意图
+  
+  
+  1.采用是持久化数据，持久化可以是数据库，也可以是文件系统 <br />
+  2.A启动获得资源排他锁,成为Master，如果A挂了，B就会立即获得资源排他锁，成为master <br />
+  3.客户端采用了实效转移，将请求由A消息服务器转移到B执行，达到高可以用 <br />
+* Prelicated LevelDB Store 基于复制的LevelDB Stroe 
+  示意图
+  1. 
+  通过zookeeper选主集群，保证zk的稳定性
+2. 
 
