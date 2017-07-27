@@ -186,10 +186,15 @@
 
   采用ActiveMQ入门的项目代码，修改url
 
-2. queue消息模型
+2. queue消息模型,修改AppProducer生产者，集群中B和C为生产者，配置实效转移
 ````
 //private static final String url="tcp://10.253.177.16:61616";
 private static final String url="failover:(tcp://10.253.177.16:61617,tcp://10.253.177.16:61618)?randomize=true";
 private static final String queueName="queue-cluster-test";
-
+````
+3.queue消息模型，修改AppConsumer消费者，集群中A、B、C为生产者，配置实效转移
+````
+//private static final String url="tcp://10.253.177.16:61616";
+	private static final String url="failover:(tcp://10.253.177.16:61616,tcp://10.253.177.16:61617,tcp://10.253.177.16:61618)?randomize=true";
+	private static final String queueName="queue-cluster-test";
   
