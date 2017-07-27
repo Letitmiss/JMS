@@ -26,8 +26,8 @@
   * 导入spring-jms
   * 导入spring-test
   * 导入activemq-core 排除spring-context
-    
-2. 创建包com.jms.producer，创建生产者接口ProducerService
+ ### 2.创建queue的生产者   
+1. 创建包com.jms.producer，创建生产者接口ProducerService
 ````
 package com.jms.producer;
 
@@ -39,7 +39,7 @@ public interface ProducerService {
 	void sendMessage(String message);
 }
 ````
-3. 创建Producer.xml的配置文件
+2. 创建Producer.xml的配置文件
 
 ````
 <?xml version="1.0" encoding="UTF-8"?>
@@ -85,7 +85,7 @@ public interface ProducerService {
  		
 </beans>
 ````
-4. 实现ProducerService接口ProducerServiceImpl
+3. 实现ProducerService接口ProducerServiceImpl
 ````
 package com.jms.producer;
 
@@ -127,7 +127,7 @@ public class ProducerServiceImpl implements ProducerService {
 	}
 }
 ````
-5.创建AppProducer.java调用producer的sendMessage方法发送消息到指定的activemq目标
+4. 创建AppProducer.java调用producer的sendMessage方法发送消息到指定的activemq目标
 ````
 package com.jms.producer;
 
@@ -150,4 +150,5 @@ public class AppProducer {
 	}
 }
 ````
-
+5. 测试queue模式生产者，发送消息到ActimeMQ
+* 首先确保activemq的页面可以访问，执行Appproducer的main方法，查看queues页签的Number Of Pending Messages 是不是100，队列名称是否增加了queue 
