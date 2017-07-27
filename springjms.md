@@ -85,6 +85,69 @@ public interface ProducerService {
  		
 </beans>
 ````
+4. 实现ProducerService接口ProducerServiceImpl
+````
+package com.jms.producer;
 
+import javax.annotation.Resource;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+import javax.jms.TextMessage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
+
+public class ProducerServiceImpl implements ProducerService {
+	
+	//自动注入
+	@Autowired
+	private JmsTemplate jmsTemplate;
+	
+	//资源注入，可以注入多个消息目的地
+	@Resource(name="queueDestination")
+	private Destination destination;
+	
+	@Override
+	public void sendMessage(String message) {
+		//使用JmsTemplate发送消息
+		jmsTemplate.send(destination,new MessageCreator() {
+			//需要创建一个消息，
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+				//创建message
+				TextMessage textMessage = session.createTextMessage(message);				
+				return textMessage;
+			}
+		});	
+		//log
+		System.out.println("发送消息" + message);			
+	}
+}
+````
+5.创建AppProducer.java调用producer的sendMessage方法发送消息到指定的activemq目标
+````
+package com.jms.producer;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ *
+ *  启动spring的producer.xml加载配置bean,
+ *  项目中交给容器加载，这里测试手动加载配置
+ */
+
+public class AppProducer {
+    public static void main(String[] args) {	
+	ApplicationContext context =new ClassPathXmlApplicationContext("classpath:producer.xml");
+	ProducerService service = context.getBean(ProducerService.class);
+	for (int i = 0; i < 100; i++) {
+		service.sendMessage("test spring-jms queue" + i);
+		}		
+	}
+}
+````
 
