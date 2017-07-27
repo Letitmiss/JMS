@@ -145,23 +145,24 @@
     ````
 * 配置 jetty端口为8162
       
- 4. 配置activemq-c
-    `
-    注释其他链接 设置opwire的对外端口为61618
-    添加链接
-   
+5 . 配置activemq-c
+
+* 注释其他链接， 设置opwire的对外端口为61618
+* 添加链接
+
+    ````
     <networkConnectors>
-                <networkConnector name="network_a" uri="static:(tcp://127.0.0.1:61616)"  />
+              <networkConnector name="network_a" uri="static:(tcp://127.0.0.1:61616)"  />
     </networkConnectors>
-    
+    ````
        
-        设置共享文件
-        <persistenceAdapter>
-            <kahaDB directory="/home/source/source/activemqclu/sharedb"/>
-        </persistenceAdapter>
-      
-      配置 jetty端口为8163
-    `
+* 设置共享文件
+     ````
+    <persistenceAdapter>
+        <kahaDB directory="/home/source/source/activemqclu/sharedb"/>
+    </persistenceAdapter>
+    ````
+* 配置 jetty端口为8163
     
  5. adc顺序启动
      
