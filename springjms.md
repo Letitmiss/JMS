@@ -2,7 +2,6 @@
 
 ## Spring集成JMS链接AtIveMQ提供
 
-
 ### ConnectionFactory用于管理连接的连接工厂
 * Spring为我们提供的连接池，减少资源消耗和等待时间
 * Jms每次发消息都会重新创建连接、会话和producor
@@ -12,4 +11,13 @@
 * JmsTemplate类是线程安全的，可在整个应用范围内使用 
 ### MessageListerner消息监听器
 * 消息监听器，需要实现一个onMessage放发,这个方法的入参就是接受到的Message消息
+
+
+
+##　Spring集成Jms演示
+
+### 项目搭建
+
+1. 创建maven项目Jms-spring，导入依赖
+
 
