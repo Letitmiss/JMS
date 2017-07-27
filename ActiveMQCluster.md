@@ -165,9 +165,8 @@
 * 配置 jetty端口为8163
     
  5. adc顺序启动
-     
-     `ps ef | grep activemq` 查看启动了三个进程 <br />
-     
-     `netstat -anp | grep 61616` ，`netstat -anp | grep 61617`  `netstat -anp | grep 61618` 查看对外服务端口 
+ 
+    `ps ef | grep activemq` 查看启动了三个进程 <br />
+    `netstat -anp | grep 61616` ，`netstat -anp | grep 61617`  `netstat -anp | grep 61618` 查看对外服务端口 
  
 
