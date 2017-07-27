@@ -16,7 +16,7 @@
 
 ## Spring集成Jms演示
 
-### 项目搭建
+### 1.项目搭建
 
 1. 创建maven项目Jms-spring，导入pom依赖
       
@@ -28,7 +28,7 @@
   * 导入activemq-core 排除spring-context
     
 2. 创建包com.jms.producer，创建生产者接口ProducerService
-```
+````
 package com.jms.producer;
 
 public interface ProducerService {
@@ -38,7 +38,53 @@ public interface ProducerService {
 	 */
 	void sendMessage(String message);
 }
+````
+3. 创建Producer.xml的配置文件
 
+````
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:aop="http://www.springframework.org/schema/aop"   
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+   		http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context
+  		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/aop 
+ 		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+ 		http://www.springframework.org/schema/tx 
+ 		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+ 		
+ 	<!-- 开启注解扫描 -->	
+ 	<context:annotation-config />
+ 	
+ 	<!-- activeMQ提供目标连接 -->
+ 	<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+ 		<property name="brokerURL" value="tcp://10.253.177.16:61616"></property>
+ 	</bean>
+ 	
+ 	<!-- spring提供管理链接工厂 -->
+ 	<bean id="connectionFactory"  class="org.springframework.jms.connection.SingleConnectionFactory">
+		<property name="targetConnectionFactory" ref="targetConnectionFactory"></property>
+ 	</bean>
+ 	
+ 	<!--队列目的地   P2P-->
+ 	<bean id="queueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+ 		<constructor-arg value="queue"></constructor-arg>
+ 	</bean>
+ 	<!-- spring 的发送消息模板类 -->
+ 	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+ 		<property name="connectionFactory" ref="connectionFactory"></property>
+ 	</bean>
+ 	
+ 	<bean id="producerServiceImpl" class="com.jms.producer.ProducerServiceImpl"></bean>
+ 		
+</beans>
+````
 
 
 
