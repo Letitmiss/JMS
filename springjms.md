@@ -263,5 +263,6 @@ public class AppConsumer {
 	<!-- 监听消息目的地 -->
  	<property name="destination" ref="topicDestination"></property>
 	````
-	
+4. 测试topic的发布与订阅
+* 首先开启订阅，再开启发布，web界面查看消息发布订阅OK；
 
