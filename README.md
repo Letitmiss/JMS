@@ -1,6 +1,13 @@
 # JMS
 Java消息中间件学习笔记
 
+## 具体实践
+### [00.消息中间件概述](https://github.com/Letitmiss/JMS/edit/master/README.md)
+### [01.JMS规范解析](https://github.com/Letitmiss/JMS/blob/master/JMS%E8%A7%84%E8%8C%83.md)
+### [02.ActiveMQ实践](https://github.com/Letitmiss/JMS/blob/master/activemq.md)
+
+
+
 # 为什么需要消息中间件？
   老王给女儿讲故事
   ![最初讲故事](https://github.com/Letitmiss/JMS/blob/master/img/001.jpg)
@@ -67,11 +74,6 @@ Java消息中间件学习笔记
  ![综合比较](https://github.com/Letitmiss/JMS/blob/master/img/009.jpg)
 
 
-
-## 具体实践
-
-### [01.JMS规范解析](https://github.com/Letitmiss/JMS/blob/master/JMS%E8%A7%84%E8%8C%83.md)
-### [02.ActiveMQ实践](https://github.com/Letitmiss/JMS/blob/master/activemq.md)
 
 
 
