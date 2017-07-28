@@ -18,7 +18,7 @@
   * [摩云飞博客](https://my.oschina.net/moooofly/blog?&search=rabbitmq)
 
 
-### 没有具体实践请参考别人的博客
+#### 没有具体实践请参考牛人的博客
 
 
 
@@ -31,3 +31,5 @@
  3. [CSDN-Tyrion-Lannister](http://blog.csdn.net/hmsiwtv/article/details/46960053)
  4. [kafka中文教程](http://orchome.com/kafka/index)
  5. [kafka-W3cschool](https://www.w3cschool.cn/apache_kafka/apache_kafka_quick_guide.html)
+ 
+ #### 没有具体实践请参考牛人的博客
