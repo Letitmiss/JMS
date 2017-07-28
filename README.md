@@ -7,6 +7,7 @@ Java消息中间件学习笔记
 ### [03.SpringJMS集成ActiveMQ](https://github.com/Letitmiss/JMS/blob/master/springjms.md)
 ### [04.ActiveMQ集群实践](https://github.com/Letitmiss/JMS/blob/master/ActiveMQCluster.md)
 ### [05.ActiveMQ企业实践中的问题](https://github.com/Letitmiss/JMS/blob/master/companyuse.md)
+### [06.其他消息中间件](https://github.com/Letitmiss/JMS/blob/master/others.md)
 
 # 为什么需要消息中间件？
   老王给女儿讲故事
