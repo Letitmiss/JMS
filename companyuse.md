@@ -83,6 +83,6 @@
 	[博客](http://www.cnblogs.com/lishijia/p/5475452.html)
 	[汤雪华专注DDD](http://www.cnblogs.com/netfocus/) 
 
-2. 时间驱动模型
+2. 事件驱动模型
 	 ![模型](https://github.com/Letitmiss/JMS/blob/master/img/shijianzongxian.jpg)
 
