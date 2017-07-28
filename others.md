@@ -17,6 +17,7 @@
   * [笑天居士RabbitMQ](http://blog.csdn.net/jiao_fuyou/article/details/21592441)
   * [摩云飞博客](https://my.oschina.net/moooofly/blog?&search=rabbitmq)
   * [CSDN-java实践](http://blog.csdn.net/lmj623565791/article/category/2386657)
+  * [CSDN-大大的微笑ForJava]http://blog.csdn.net/chwshuang/article/category/6066031
 
 
 #### 没有具体实践请参考牛人的博客
