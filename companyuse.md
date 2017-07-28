@@ -1,6 +1,5 @@
-## 企业系统中JMS的最佳实践 
-
-### 实际业务场景
+### [首页](https://github.com/Letitmiss/JMS/blob/master/README.md)
+# 企业系统中JMS的最佳实践 
    ![实际业务](https://github.com/Letitmiss/JMS/blob/master/img/fenxi1.jpg)
 1. 分析
 * 登录系统发出登录消息，积分系统和日志系统都要感知到这个事件，类似订阅消息模式
