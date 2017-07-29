@@ -11,10 +11,9 @@
 
 ### 安装步骤
 
-1. 先安装Erlang,点击EXE执行即可，安装完要配置ERLANG_HOME环境变量 ，配置`ERLANG_HOME/bin`系统路径PATH，cmd输入erl查看版本信息
-2. 安装RabbitMQ，点击EXE执行，配置环境变量RABBITMQ_SERVER，配置`RABBITMQ_SERVER/sbin`到系统路径
-3. 同步Erlang Cookie，.erlang.cookie是erlang实现分布式的必要文件，erlang分布式的每个节点上要保持相同的.erlang.cookie文件，同时保证文件的权限是400,
-   windows安装要保证windows系统和用户.erlang.cookie相同，具体操作复制`C:\Windows\.erlang.cookie`替换`C:\Users\Administrator\.erlang.cookie`;
+1. 先安装Erlang,点击EXE执行即可，安装完要配置ERLANG_HOME环境变量 ，配置`ERLANG_HOME/bin`到系统路径PATH，cmd输入erl查看版本信息
+2. 安装RabbitMQ，点击EXE执行，配置环境变量RABBITMQ_SERVER，配置`RABBITMQ_SERVER/sbin`到系统路径PATH
+3. 同步Erlang Cookie，.erlang.cookie是erlang实现分布式的必要文件，erlang分布式的每个节点上要保持相同的.erlang.cookie文件，同时保证文件的权限是400,windows安装要保证windows系统和用户.erlang.cookie相同，具体操作复制`C:\Windows\.erlang.cookie`替`C:\Users\Administrator\.erlang.cookie`;
 4. rabbitmq的两种启动方式
 *  **以应用方式启动**
     * `rabbitmq-server -detached` 后台启动
