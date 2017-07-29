@@ -1,10 +1,5 @@
-# RabbitMQ学习
 
-# RabbitMQ基础知识
-  
-
-# RabbitMQ入门实战
-## windows安装
+## RabbitMQ安装(Windows)
 
 ### 下载安装包
   
@@ -16,16 +11,15 @@
 
 ### 安装步骤
 
-1. 先安装Erlang,点击EXE执行即可，安装完要配置ERLANG_HOME环境变量 ，配置`ERLANG_HOME/bin`系统路径PATH，cmd输入erl查看版本信息
-2. 安装RabbitMQ，点击EXE执行，配置环境变量RABBITMQ_SERVER，配置`RABBITMQ_SERVER/sbin`到系统路径
-3. 同步Erlang Cookie，.erlang.cookie是erlang实现分布式的必要文件，erlang分布式的每个节点上要保持相同的.erlang.cookie文件，同时保证文件的权限是400,
-   windows安装要保证windows系统和用户.erlang.cookie相同，具体操作复制`C:\Windows\.erlang.cookie`替换`C:\Users\Administrator\.erlang.cookie`;
+1. 先安装Erlang,点击EXE执行即可，安装完要配置ERLANG_HOME环境变量 ，配置`ERLANG_HOME/bin`到系统路径PATH，cmd输入erl查看版本信息
+2. 安装RabbitMQ，点击EXE执行，配置环境变量RABBITMQ_SERVER，配置`RABBITMQ_SERVER/sbin`到系统路径PATH
+3. 同步Erlang Cookie，.erlang.cookie是erlang实现分布式的必要文件，erlang分布式的每个节点上要保持相同的.erlang.cookie文件，同时保证文件的权限是400,windows安装要保证windows系统和用户.erlang.cookie相同，具体操作复制`C:\Windows\.erlang.cookie`替`C:\Users\Administrator\.erlang.cookie`;
 4. rabbitmq的两种启动方式
 *  **以应用方式启动**
     * `rabbitmq-server -detached` 后台启动
     * `rabbitmq-server` 直接启动，如果你关闭窗口或者需要在改窗口使用其他命令时应用就会停止
     * `rabbitmqctl status` 查看是否启动Ok
-    * `abbitmqctl stop`   关闭
+    * `abbitmqctl stop`   关闭 <br/>
   显示如下为启动成功
   
   ````
@@ -99,7 +93,7 @@ Status of node 'rabbit@PC-20170618CMDN'
   
 6. 服务启动可以查看rabbitmq的web界面
      
-     图示
+     ![Rabbimq-eb](https://github.com/Letitmiss/JMS/blob/master/img/rabbitmq-1.jpg)
    默认的用户名和密码是guest
    
 7. 账户管理
@@ -137,6 +131,15 @@ Status of node 'rabbit@PC-20170618CMDN'
   rabbitmq        [administrator]
   guest   [administrator]
   ````
+ * 使用rabbitmq/rabbitmq123 登录web界面OK
+
+### FAQ
+1. 电脑系统中的其他应用程序已经安装了erlang的旧版本，需要卸载
+2. 前面要求配置的环境变量没有配置完整
+3. erlang cookie 没有同步
+
+这个安装有很多坑，别人博客就写了几句话，自己搞了几个小时，亲自测试才知道坑很多
+
 
 
 
