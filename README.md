@@ -11,7 +11,7 @@ Java消息中间件学习笔记
 ### [06.其他消息中间件](https://github.com/Letitmiss/JMS/blob/master/blog/others.md)
 
 ## RabbitMQ
-### [01RabbitMQ安装](https://github.com/Letitmiss/JMS/blob/master/blog/rabbitmq.md)
+### [01RabbitMQ安装windows](https://github.com/Letitmiss/JMS/blob/master/blog/rabbitmq-install-win.md)
 
 # 为什么需要消息中间件？
   老王给女儿讲故事
