@@ -20,7 +20,7 @@
     * `rabbitmq-server -detached` 后台启动
     * `rabbitmq-server` 直接启动，如果你关闭窗口或者需要在改窗口使用其他命令时应用就会停止
     * `rabbitmqctl status` 查看是否启动Ok
-    * `abbitmqctl stop`   关闭
+    * `abbitmqctl stop`   关闭 <br/>
   显示如下为启动成功
   
   ````
