@@ -1,6 +1,10 @@
+### [首页](https://github.com/Letitmiss/JMS/blob/master/README.md)
 # RabbitMQ 基础介绍
     
-    CSDN—anzhsoft的技术专栏 
+   原文CSDN—anzhsoft的技术专栏[RabbitMQ消息队列之Detailed Introduction 详细介绍](http://blog.csdn.net/anzhsoft/article/details/19563091) 
+
+# RabbitMQ
+
  ## 应用场景
  
 >     对于一个大型的软件系统来说，它会有很多的组件或者说模块或者说子系统或者（subsystem or Component or submodule）。那么这些模块的如何通信？这和传
