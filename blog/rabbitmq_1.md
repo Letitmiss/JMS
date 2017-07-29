@@ -1,6 +1,6 @@
 # RabbitMQ 基础介绍
-
-   
+    
+    CSDN—anzhsoft的技术专栏 
  ## 应用场景
  
 >     对于一个大型的软件系统来说，它会有很多的组件或者说模块或者说子系统或者（subsystem or Component or submodule）。那么这些模块的如何通信？这和传
