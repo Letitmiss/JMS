@@ -1,10 +1,5 @@
-# RabbitMQ学习
 
-# RabbitMQ基础知识
-  
-
-# RabbitMQ入门实战
-## windows安装
+## RabbitMQ安装(Windows)
 
 ### 下载安装包
   
@@ -99,7 +94,7 @@ Status of node 'rabbit@PC-20170618CMDN'
   
 6. 服务启动可以查看rabbitmq的web界面
      
-     图示
+     ![Rabbimq-eb](https://github.com/Letitmiss/JMS/blob/master/img/rabbitmq-1.jpg)
    默认的用户名和密码是guest
    
 7. 账户管理
@@ -137,6 +132,15 @@ Status of node 'rabbit@PC-20170618CMDN'
   rabbitmq        [administrator]
   guest   [administrator]
   ````
+ * 使用rabbitmq/rabbitmq123 登录web界面OK
+
+### FAQ
+1. 电脑系统中的其他应用程序已经安装了erlang的旧版本，需要卸载
+2. 前面要求配置的环境变量没有配置完整
+3. erlang cookie 没有同步
+
+这个安装有很多坑，别人博客就写了几句话，自己搞了几个小时，亲自测试才知道坑很多
+
 
 
 
