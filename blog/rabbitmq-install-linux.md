@@ -83,6 +83,7 @@
 ### RabbitMQ的管理 
 
 * rabbitmq通过rabbitmqctl命令管理 abbitmq常用命令
+http://blog.csdn.net/u013256816/article/details/53524814
     * `add_user       <UserName> <Password>`
     * `delete_user    <UserName>`
     * `change_password <UserName> <NewPassword>`
