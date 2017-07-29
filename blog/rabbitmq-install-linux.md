@@ -1,9 +1,10 @@
 ###  [首 页](https://github.com/Letitmiss/JMS/blob/master/README.md)
 # RabbitMQ安装Linux
 
-## 下载资源
+## 安装步骤 
 
-1. 虚拟机环境是CentOS，执行`yum install gcc glibc-devel make ncurses-devel openssl-devel xmlto` 安装依赖
+### 安装Erlang
+1. 虚拟机环境是CentOS7.9，执行`yum install gcc glibc-devel make ncurses-devel openssl-devel xmlto` 安装依赖
 2. 安装erlang,地址http://www.erlang.org/downloads. 我选择的是otp_src_18.3.tar.gz。
 * 在指定下载目录下执行`wget http://erlang.org/download/otp_src_18.3.tar.gz`获取下载包
   ```
@@ -34,9 +35,11 @@
     #set erlang environment 
     export PATH=$PATH:/opt/erlang/bin
     source  /etc/profile 使得文件生效
+    
+### 安装RaabitMQ
+1. 安装rabbitmq，下载地址http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.10/  按照
+    一步步操作
     ````
-3. 安装rabbitmq，地址http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.10/
-   ````
     wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.10/rabbitmq-server-generic-unix-3.6.10.tar.xz
     [root@gaocong rabbitmq]# xz -d rabbitmq-server-generic-unix-3.6.10.tar.xz
     [root@gaocong rabbitmq]# tar -xvf rabbitmq-server-generic-unix-3.6.10.tar 
@@ -60,7 +63,7 @@
         {kernel,{net_ticktime,60}}]
     [root@gaocong sbin]# ps -ef | grep rabbitmq
          ````
-4. 登录web界面查看
+2. 登录web界面查看
   ````
    [root@gaocong sbin]# ./rabbitmq-plugins enable rabbitmq_management
     The following plugins have been enabled:
@@ -76,3 +79,7 @@
     配置linux 端口 15672 网页管理  5672 AMQP端口, 此时远程可以打开界面，但是guest/guest 也是不能登录的
     
    参考windows安装的时候，添加用户的方式，添加新用户，赋予管理员权限就可以登录了
+   ![login](https://github.com/Letitmiss/JMS/blob/master/img/activemq-2.jpg)
+   
+### RabbitMQ的管理 
+   
