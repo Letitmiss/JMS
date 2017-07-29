@@ -97,6 +97,46 @@ Status of node 'rabbit@PC-20170618CMDN'
   * `rabbitmq-plugins enable rabbitmq_management` 启动
   * `rabbitmq-plugins disable rabbitmq_management` 关闭
   
+6. 服务启动可以查看rabbitmq的web界面
+     
+     图示
+   默认的用户名和密码是guest
+   
+7. 账户管理
+* 查看账户列表，只有guest
+
+  ````
+  C:\Users\Administrator>rabbitmqctl.bat list_users
+  Listing users
+  guest   [administrator]
+  ````
+  
+* 新增一个rabbitmq的账，密码为rabbitmq123
+
+    ````
+    C:\Users\Administrator>rabbitmqctl.bat add_user rabbitmq rabbitmq123
+    Creating user "rabbitmq"
+
+    C:\Users\Administrator>rabbitmqctl.bat list_users
+    Listing users
+    rabbitmq        []
+    guest   [administrator]
+    ````
+
+* 给rabbitmq用户设置管理员权限
+  ````
+  C:\Users\Administrator>rabbitmqctl.bat set_user_tags rabbitmq administrator
+  Setting tags for user "rabbitmq" to [administrator]
+
+  C:\Users\Administrator>rabbitmqctl.bat set_permissions -p / rabbitmq ".*" ".*" "
+  .*"
+  Setting permissions for user "rabbitmq" in vhost "/"
+
+  C:\Users\Administrator>rabbitmqctl.bat list_users
+  Listing users
+  rabbitmq        [administrator]
+  guest   [administrator]
+  ````
 
 
 
