@@ -5,13 +5,13 @@ Java消息中间件学习笔记
 ## ActiveMQ
 ### [01.JMS规范解析](https://github.com/Letitmiss/JMS/blob/master/JMS.md)
 ### [02.ActiveMQ入门](https://github.com/Letitmiss/JMS/blob/master/blog/activemq.md)
-### [03.SpringJMS集成ActiveMQ](https://github.com/Letitmiss/JMS/blob/master/springjms.md)
-### [04.ActiveMQ集群实践](https://github.com/Letitmiss/JMS/blob/master/ActiveMQCluster.md)
-### [05.ActiveMQ企业实践中的问题](https://github.com/Letitmiss/JMS/blob/master/companyuse.md)
-### [06.其他消息中间件](https://github.com/Letitmiss/JMS/blob/master/others.md)
+### [03.SpringJMS集成ActiveMQ](https://github.com/Letitmiss/JMS/blob/master/blog/springjms.md)
+### [04.ActiveMQ集群实践](https://github.com/Letitmiss/JMS/blob/master/blog/ActiveMQCluster.md)
+### [05.ActiveMQ企业实践中的问题](https://github.com/Letitmiss/JMS/blob/master/blog/companyuse.md)
+### [06.其他消息中间件](https://github.com/Letitmiss/JMS/blob/master/blog/others.md)
 
 ## RabbitMQ
-### [01RabbitMQ安装](https://github.com/Letitmiss/JMS/blob/master/rabbitmq.md)
+### [01RabbitMQ安装](https://github.com/Letitmiss/JMS/blob/master/blog/rabbitmq.md)
 
 # 为什么需要消息中间件？
   老王给女儿讲故事
