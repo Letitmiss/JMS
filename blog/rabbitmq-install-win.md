@@ -123,8 +123,7 @@ Status of node 'rabbit@PC-20170618CMDN'
   C:\Users\Administrator>rabbitmqctl.bat set_user_tags rabbitmq administrator
   Setting tags for user "rabbitmq" to [administrator]
 
-  C:\Users\Administrator>rabbitmqctl.bat set_permissions -p / rabbitmq ".*" ".*" "
-  .*"
+  C:\Users\Administrator>rabbitmqctl.bat set_permissions -p / rabbitmq ".*" ".*" ".*"
   Setting permissions for user "rabbitmq" in vhost "/"
 
   C:\Users\Administrator>rabbitmqctl.bat list_users
