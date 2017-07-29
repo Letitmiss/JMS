@@ -3,7 +3,7 @@ Java消息中间件学习笔记
 
 ### [00.消息中间件概述](https://github.com/Letitmiss/JMS/blob/master/README.md)
 ## ActiveMQ
-### [01.JMS规范解析](https://github.com/Letitmiss/JMS/blob/master/JMS.md)
+### [01.JMS规范解析](https://github.com/Letitmiss/JMS/blob/master/blog/JMS.md)
 ### [02.ActiveMQ入门](https://github.com/Letitmiss/JMS/blob/master/blog/activemq.md)
 ### [03.SpringJMS集成ActiveMQ](https://github.com/Letitmiss/JMS/blob/master/blog/springjms.md)
 ### [04.ActiveMQ集群实践](https://github.com/Letitmiss/JMS/blob/master/blog/ActiveMQCluster.md)
