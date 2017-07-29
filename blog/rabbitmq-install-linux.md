@@ -35,8 +35,44 @@
     export PATH=$PATH:/opt/erlang/bin
     source  /etc/profile 使得文件生效
     ````
-3. 安装rabbitmq，地址 
-   
+3. 安装rabbitmq，地址http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.10/
+   ````
+    wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.10/rabbitmq-server-generic-unix-3.6.10.tar.xz
+    [root@gaocong rabbitmq]# xz -d rabbitmq-server-generic-unix-3.6.10.tar.xz
+    [root@gaocong rabbitmq]# tar -xvf rabbitmq-server-generic-unix-3.6.10.tar 
+    [root@gaocong rabbitmq]# mv rabbitmq_server-3.6.10/ rabbitmq
+    [root@gaocong rabbitmq]# vim /etc/profile
+        #set rabbitmq environment
+        export PATH=$PATH:/gaocong/rabbitmq/rabbitmq/sbin 配置自己的解压目录
+    [root@gaocong rabbitmq]# source /etc/profile
+    [root@gaocong sbin]# ./rabbitmq-server -detached
+       Warning: PID file not written; -detached was passed.
+    [root@gaocong sbin]# ./rabbitmqctl status
+    Status of node rabbit@gaocong
+        [{pid,1169},
+        {running_applications,
+        [{rabbit,"RabbitMQ","3.6.10"},
+        {mnesia,"MNESIA  CXC 138 12","4.13.3"},
+        {ranch,"Socket acceptor pool for TCP protocols.","1.3.0"},
+              .....
+        {run_queue,0},
+        {uptime,49},
+        {kernel,{net_ticktime,60}}]
+    [root@gaocong sbin]# ps -ef | grep rabbitmq
+         ````
+4. 登录web界面查看
+  ````
+   [root@gaocong sbin]# ./rabbitmq-plugins enable rabbitmq_management
+    The following plugins have been enabled:
+    amqp_client
+    cowlib
+    cowboy
+    rabbitmq_web_dispatch
+    rabbitmq_management_agent
+    rabbitmq_management
 
-  
-   
+    Applying plugin configuration to rabbit@gaocong... started 6 plugins.
+   ````
+    配置linux 端口 15672 网页管理  5672 AMQP端口, 此时远程可以打开界面，但是guest/guest 也是不能登录的
+    
+   参考windows安装的时候，添加用户的方式，添加新用户，赋予管理员权限就可以登录了
