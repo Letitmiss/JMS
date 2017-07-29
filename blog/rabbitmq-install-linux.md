@@ -79,7 +79,22 @@
     配置linux 端口 15672 网页管理  5672 AMQP端口, 此时远程可以打开界面，但是guest/guest 也是不能登录的
     
    参考windows安装的时候，添加用户的方式，添加新用户，赋予管理员权限就可以登录了
-   ![login](https://github.com/Letitmiss/JMS/blob/master/img/activemq-2.jpg)
-   
+   ![login](https://github.com/Letitmiss/JMS/blob/master/img/activemq-2.jpg)  
 ### RabbitMQ的管理 
-   
+
+* rabbitmq通过rabbitmqctl命令管理 abbitmq常用命令
+    * `add_user       <UserName> <Password>`
+    * `delete_user    <UserName>`
+    * `change_password <UserName> <NewPassword>`
+    * `list_users`
+    * `add_vhost    <VHostPath>`
+    * `delete_vhost <VHostPath>`
+    * `list_vhostsset_permissions  [-p <VHostPath>] <UserName> <Regexp> <Regexp> <Regexp>`
+    * `clear_permissions [-p <VHostPath>] <UserName>`
+    * `list_permissions  [-p <VHostPath>]`
+    * `list_user_permissions <UserName>`
+    * `list_queues    [-p <VHostPath>] [<QueueInfoItem> ...]`
+    * `list_exchanges [-p <VHostPath>] [<ExchangeInfoItem> ...]`
+    * `list_bindings  [-p <VHostPath>]`
+    * `list_connections [<ConnectionInfoItem> ...]`
+   
