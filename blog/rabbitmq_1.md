@@ -42,7 +42,7 @@
 
    * 还有几个概念是上述图中没有标明的，那就是Connection（连接），Channel（通道，频道）。
       * Connection： 就是一个TCP的连接。Producer和Consumer都是通过TCP连接到RabbitMQ Server的。以后我们可以看到，程序的起始处就是建立这个TCP连接。
-      * Channels： 虚拟连接。它建立在上述的TCP连接中。数据流动都是在Channel中进行的。也就是说，一般情况是程序起始建立TCP连接，第二步就是建立这Channel。
+      * Channels： 虚拟连接。它建立在上述的TCP连接中。数据流动都是在Channel中进行的。也就是说，一般情况是程序起始建立TCP连接，第二步就是建立这Channel,每个channel都会被分配唯一的ID，所有消息的发布和订阅都是通过channel去处理的
 
   * 那么，为什么使用Channel，而不是直接使用TCP连接？
 
