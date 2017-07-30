@@ -22,11 +22,8 @@
   AMDQ协议解决了以上的问题，而RabbitMQ实现了AMQP。
   
 ## AMQP架构
-
         
-        [示意图]
-  
-  
+        ![示意图](https://github.com/Letitmiss/JMS/blob/master/img/rabbitmq-3.jpg)
   *  RabbitMQ Server： 也叫broker server，它不是运送食物的卡车，而是一种传输服务，维护一条从Producer到Consumer的路线，保证数据能够按照指定的方式进行传输。但是这个保证也不是100%的保证，但是对于普通的应用来说这已经足够了。当然对于商业系统来说，可以再做一层数据一致性的Guard，就可以彻底保证系统的一致性了。
   * Client A & B： 也叫Producer，数据的发送方。createmessages and publish (send) them to a broker server (RabbitMQ).一个Message有两个部分：payload（有效载荷）和label（标签）。payload顾名思义就是传输的数据。label是exchange的名字或者说是一个tag，它描述了payload，而且RabbitMQ也是通过这个label来决定把这个Message发给哪个Consumer。AMQP仅仅描述了label，而RabbitMQ决定了如何使用这个label的规则。
 
