@@ -33,12 +33,80 @@
             <version>3.6.6</version>
         </dependency>
    ````
-  2. 创建包com.rabbit.helloworld,创建生产者producer
-  
-  
-  
-## rabbitMQ的API
-  
+  2. 创建包com.rabbit.helloworld,创建生产者product
+  ````
+  public class Product {
+	
+	private static final String QUEUE_NANE="Hello"; 
+	
+	public static void main(String[] args) throws IOException, TimeoutException {
+		
+		//创建链接工厂
+		ConnectionFactory factory = new ConnectionFactory();
+		//设置链接条件
+		factory.setHost("localhost");
+
+		//创建一个链接
+		Connection connection = factory.newConnection();
+		//创建一个channel
+		Channel channel = connection.createChannel();
+		//指定一个队列
+		channel.queueDeclare(QUEUE_NANE, false, false, false, null);
+		
+		String message = "hello rabbit";
+		//发送消息
+		channel.basicPublish("", QUEUE_NANE, null, message.getBytes());
+		System.out.println("send message :" + message);
+		//关闭 连接
+		channel.close();
+		connection.close();
+		
+	}
+
+}
+````
+  3. 创建消息的消费者consume
+  ````
+ public class Consume {
+		
+private static final String QUEUE_NANE="Hello"; 
+	
+	
+	public static void main(String[] args) throws Exception {
+		
+		//创建链接工厂
+		ConnectionFactory factory = new ConnectionFactory();
+		//设置链接条件
+		factory.setHost("localhost");
+	
+		//创建一个链接
+		Connection connection = factory.newConnection();
+		//创建一个channel
+		Channel channel = connection.createChannel();
+		
+		channel.queueDeclare(QUEUE_NANE,false,false,false,null);
+		System.out.println("waiting message ...");
+			
+		Consumer consumer = new DefaultConsumer(channel){
+			
+    @Override
+    public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties, byte[] body)
+      throws IOException {
+      String message = new String(body,"utf-8");					
+      System.out.println("Receive message :" + message);
+			}	
+		};
+				
+		channel.basicConsume(QUEUE_NANE, true,consumer);
+	}			
+}
+ ````
+4. 测试.先启动消息的消费者，再启动消费的生产者以来看到控制台打印的消息；表示消息接受和发送都是OK
+
+   ![示意图](https://github.com/Letitmiss/JMS/blob/master/img/rabbitrumen-4.jpg)
+   
+   
+
 
  
  
