@@ -103,9 +103,9 @@ private static final String QUEUE_NANE="Hello";
  ````
 4. 测试.先启动消息的消费者，再启动消费的生产者以来看到控制台打印的消息；表示消息接受和发送都是OK
 
-   ![示意图](https://github.com/Letitmiss/JMS/blob/master/img/rabbitrumen-4.jpg)
+   ![示意图](https://github.com/Letitmiss/JMS/blob/master/img/rabbitrumen.jpg)
    
-   
+
 
 
  
