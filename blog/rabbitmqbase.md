@@ -24,5 +24,23 @@
     
     
  ## 入门程序 
+    
+  1. 创建Rabbitmq的maven项目，导入POM
+  ````
+       <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>3.6.6</version>
+        </dependency>
+   ````
+  2. 创建包com.rabbit.helloworld,创建生产者producer
+  
+  
+  
+## rabbitMQ的API
+  
+
+ 
+ 
  
  
