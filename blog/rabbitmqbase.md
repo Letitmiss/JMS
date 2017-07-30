@@ -3,7 +3,7 @@
 
 ## RabbitMQ基本工作流程
 
-    [示意图]
+    ![示意图](https://github.com/Letitmiss/JMS/blob/master/img/rabbitmq-4.jpg)
 
 1. virtual host 虚拟主机
 
