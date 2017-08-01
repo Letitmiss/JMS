@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<!-- 权限管理 permission -->
+	<package name="pms" extends="loginPackage">
+	
+		<!-- 权限管理，包括权限点、角色、用户和管理 -->
+		<action name="pms_*" class="wusc.edu.demo.user.action.PmsUserAction" method="{1}">
+			<result name="PmsUserList">page/pms/PmsUserList.jsp</result>
+			<result name="PmsUserView">page/pms/PmsUserView.jsp</result>
+			<result name="PmsUserViewOwnInfo">page/pms/PmsUserViewOwnInfo.jsp</result>
+			<result name="PmsUserAdd">page/pms/PmsUserAdd.jsp</result>
+			<result name="PmsUserEdit">page/pms/PmsUserEdit.jsp</result>
+			<result name="PmsUserResetPwd">page/pms/PmsUserResetPwd.jsp</result>
+			<result name="PmsUserChangeOwnPwd">page/pms/PmsUserChangeOwnPwd.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>

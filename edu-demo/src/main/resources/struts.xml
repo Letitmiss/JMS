@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<!-- 设置Action请求后缀 value="action,," -->
+	<constant name="struts.action.extension" value="action,do" />
+	<!-- 设置默认上传文件大小限制 -->
+	<constant name="struts.multipart.maxSize" value="20971520" />
+	<!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 开发模式下使用,这样可以打印出更详细的错误信息 -->
+	<constant name="struts.devMode" value="false" />
+	<!-- 使用spring自动注入总是有效 -->
+	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
+
+	<include file="struts-default.xml" />
+
+	<package name="base" namespace="/" extends="json-default">
+		<interceptors>
+			<!--定义属性驱动的拦截器 -->
+			<interceptor name="params" class="com.opensymphony.xwork2.interceptor.ParametersInterceptor"></interceptor>
+
+			<!-- 加载拦截器至stack -->
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="params" />
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 设置系统默认拦截器 -->
+		<default-interceptor-ref name="defaultStack" />
+
+		<global-results>
+			<result name="exception">page/common/error.jsp</result>
+			<result name="operateSuccess">page/common/operateSuccess.jsp</result>
+			<result name="operateError">page/common/operateError.jsp</result>
+			<result name="permissionError">page/common/permissionError.jsp</result>
+		</global-results>
+
+	</package>
+
+	<!-- Struts2配置文件分模块引用 -->
+	<include file="struts/struts-login.xml" />
+	<include file="struts/struts-nologin.xml" />
+</struts>
